@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Paper Rock Scissors!</title>
+        <script>
+
+            const playOptions = ['Rock', 'Paper', 'Scissors']
+
+            function them() {
+                const cpuRandom = Math.floor(Math.random() * playOptions.length);
+                const cpuOutput = playOptions[cpuRandom];
+                return cpuOutput
+            }
+
+            function playRound(playerSelection, cpuSelection) {
+                let player = playerSelection.toLowerCase()
+                let cpu = cpuSelection.toLowerCase()
+                
+                if (player === cpu) {
+                    return 'Tie Game';
+                } else if (player === 'rock' && cpu === 'paper') {
+                     return 'You Lose! ' + cpu  + " beats " + player; 
+                } else if (player === 'rock' && cpu === 'scissors') {
+                     return 'You win! ' + player  + " beats " + cpu; 
+                } else if (player === 'paper' && cpu === 'scissors') {
+                     return 'You Lose! ' + cpu  + " beats " + player; 
+                } else if (player === 'paper' && cpu === 'rock') {
+                     return 'You win! ' + player  + " beats " + cpu; 
+                } else if (player === 'scissors' && cpu === 'rock') {
+                     return 'You Lose! ' + cpu  + " beats " + player; 
+                } else if (player === 'scissors' && cpu === 'paper') {
+                     return 'You win! ' + player  + " beats " + cpu; 
+                }
+            }
+
+            function game() {
+                let playerScore = 0;
+                let cpuScore = 0;
+
+                for (let i = 1; i < 6; i++) {
+                    if (playRound('Rock', them()).charAt(0) === 'T') {
+                        playerScore += 0;
+                        cpuScore += 0;
+                    } else if (playRound('Rock', them()).charAt(4) === 'w') {
+                        playerScore += 1;
+                    } else {
+                        cpuScore += 1;
+                    }
+                }
+
+                if (playerScore === cpuScore) {
+                    return 'Both won equal amount of times!';
+                } else if (playerScore > cpuScore) {
+                    return "You win with a score of " + playerScore + " to " + cpuScore;   
+                } else {
+                    return "You lose with a score of " + cpuScore + " to " + playerScore;
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>
